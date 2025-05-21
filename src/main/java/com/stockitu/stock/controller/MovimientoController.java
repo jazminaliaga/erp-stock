@@ -18,10 +18,18 @@ public class MovimientoController {
         this.movimientoService = movimientoService;
     }
 
-    @PostMapping("/registrar")
-    public ResponseEntity<String> registrarMovimiento(@RequestBody MovimientoDTO dto) {
+    @PostMapping("/entrada")
+    public ResponseEntity<String> registrarEntrada(@RequestBody MovimientoDTO dto) {
+        dto.setTipoMovimiento(TipoMovimiento.ENTRADA);
         movimientoService.registrarMovimiento(dto);
-        return ResponseEntity.ok("Movimiento registrado");
+        return ResponseEntity.ok("Entrada registrada correctamente");
+    }
+
+    @PostMapping("/salida")
+    public ResponseEntity<String> registrarSalida(@RequestBody MovimientoDTO dto) {
+        dto.setTipoMovimiento(TipoMovimiento.SALIDA);
+        movimientoService.registrarMovimiento(dto);
+        return ResponseEntity.ok("Salida registrada correctamente");
     }
 
     @GetMapping
