@@ -17,6 +17,7 @@ public class MovimientoStock {
     private int id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_movimiento")
     private TipoMovimiento tipoMovimiento;
     private int stock;
     private LocalDateTime fecha;
